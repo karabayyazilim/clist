@@ -4,7 +4,7 @@
 
 #### Creating list
 
-    c_list *list = list_create(sizeof(int));
+    t_list *list = list_create(sizeof(int));
     
 #### Adding item to list
 
@@ -16,7 +16,7 @@
     
 #### Get list item
 
-    c_list *list = create_list(sizeof(int));
+    t_list *list = create_list(sizeof(int));
     
     for(int i = 0; i < 10; i++);
       list_add(list, i);
@@ -30,7 +30,7 @@
     
 #### Working with different types
 
-    c_list *list = list_create(sizeof(char));
+    t_list *list = list_create(sizeof(char));
     list_add(list, 'A');
     
     
@@ -40,7 +40,7 @@
      int y;
     } t_list;
     
-    c_list *list = list_create(sizeof(t_list));
+    t_list *list = list_create(sizeof(t_list));
     
     t_list data;
     data.x = 20;

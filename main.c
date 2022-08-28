@@ -1,15 +1,12 @@
 #include "clist.h"
 
-
-int main()
+int	main(void)
 {
+	t_list	*list;
 
-	c_list* list = list_create(sizeof(int));
-
+	list = list_create(sizeof(int));
 	for (int i = 0; i < 10; i++)
 		list_add(list, i);
-
 	for (int i = 0; i < 10; i++)
-		printf("%d\n", *(int*)list_item_at(list, i));
-
+		printf("%d\n", *(int *)list_item_at(list, i));
 }
