@@ -9,10 +9,10 @@ c_list* list_create(unsigned int type_size)
 {
 	c_list* list;
 
-	list = malloc(sizeof(c_list));
+	list = ft_ccalloc(1,sizeof(c_list));
 	if (list == NULL)
 		return NULL;
-	list->arr = malloc(CLIST_SIZE * type_size);
+	list->arr = ft_ccalloc(CLIST_SIZE, type_size);
 	if (list->arr == NULL)
 	{
 		free(list);
@@ -33,7 +33,7 @@ void list_add(c_list* list, int item)
 		return;
 	if (list->length >= list->size)
 	{
-		tmp = malloc((list->size + CLIST_RESIZE) * list->type_size);
+		tmp = ft_ccalloc((list->size + CLIST_RESIZE), list->type_size);
 		if (tmp == NULL)
 			return;
 		i = 0;
@@ -63,7 +63,7 @@ void list_addf(c_list* list, float item)
 		return;
 	if (list->length >= list->size)
 	{
-		tmp = malloc((list->size + CLIST_RESIZE) * list->type_size);
+		tmp = ft_ccalloc(list->size + CLIST_RESIZE,list->type_size);
 		if (tmp == NULL)
 			return;
 		i = 0;
@@ -93,7 +93,7 @@ void list_addptr(c_list* list, void *item)
 		return;
 	if (list->length >= list->size)
 	{
-		tmp = malloc((list->size + CLIST_RESIZE) * list->type_size);
+		tmp = ft_ccalloc(list->size + CLIST_RESIZE, list->type_size);
 		if (tmp == NULL)
 			return;
 		i = 0;
@@ -160,7 +160,7 @@ void list_remove_at(c_list* list, size_t index)
 
 	if (list == NULL || index > list->length)
 		return;
-	tmp = malloc(list->size * list->type_size);
+	tmp = ft_ccalloc(list->size, list->type_size);
 	if (tmp == NULL)
 		return;
 	i = 0;
@@ -180,6 +180,15 @@ void list_remove_at(c_list* list, size_t index)
 	list->length--;
 	free(list->arr);
 	list->arr = tmp;
+}
+
+void list_destroy(c_list* list)
+{
+	if (list == NULL)
+		return;
+	if (list->arr)
+		free(list->arr);
+	free(list);
 }
 
 void list_print(c_list* list)
